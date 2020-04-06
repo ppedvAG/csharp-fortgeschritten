@@ -98,6 +98,66 @@ namespace WinFormsGoogleBooks
             }
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.DataSource is List<StringComparer>) //typprüfung
+            {
+                List<StringComparer> data = (List<StringComparer>)dataGridView1.DataSource; //casting
+            }
+
+            //boxing
+            List<StringComparer> data2 = dataGridView1.DataSource as List<StringComparer>;
+            if (data2 != null)
+            {
+                //...
+            }
+
+            if (dataGridView1.DataSource is List<Volumeinfo> volumes) //ab VS2017 - pattern matching
+            {
+                //Linq Quries / Linq Expressions
+                var query = from b in volumes
+                            where b.pageCount > 100
+                            orderby b.averageRating descending, b.title
+                            select b;
+
+                dataGridView1.DataSource = query.ToList();
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.DataSource is List<Volumeinfo> volumes)
+            {
+                dataGridView1.DataSource = volumes.Where(b => b.pageCount > 100)
+                                                  .OrderByDescending(x => x.averageRating)
+                                                  .ThenBy(x => x.title)
+                                                  .ToList();
+            }
+
+
+            //beispiel Erweiterungsmethode
+            DateTime dt = DateTime.Now;
+            dt.GetKW();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.DataSource is List<Volumeinfo> volumes)
+            {
+                var result = volumes.Where(x => x.ratingsCount > 0).Average(x => x.averageRating);
+                MessageBox.Show($"Result: {result}");
+            }
+        }
+    }
+
+    public static class MeineErweiterungen
+    {
+        public static int GetKW(this DateTime dt) //<- erweitungerungsmethode 
+        {
+            return 15;
+        }
+
     }
 
 }
