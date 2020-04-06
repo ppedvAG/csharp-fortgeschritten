@@ -1,8 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace WinFormsGoogleBooks
 {
@@ -30,6 +33,39 @@ namespace WinFormsGoogleBooks
             BookResults result = JsonConvert.DeserializeObject<BookResults>(json);
             dataGridView1.DataSource = result.items.Select(x => x.volumeInfo).ToList();
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var dlg = new SaveFileDialog();
+            dlg.Filter = "XML Datei|*.xml|Alle Dateien|*.*";
+            dlg.Title = "Bücher speichern";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                using (var sw = new StreamWriter(dlg.FileName))
+                {
+                    var serial = new XmlSerializer(typeof(List<Volumeinfo>));
+                    serial.Serialize(sw, dataGridView1.DataSource);
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            dlg.Filter = "XML Datei|*.xml|Alle Dateien|*.*";
+            dlg.Title = "Bücher laden";
+
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                using (var sr = new StreamReader(dlg.FileName))
+                {
+                    var serial = new XmlSerializer(typeof(List<Volumeinfo>));
+                    dataGridView1.DataSource = serial.Deserialize(sr);
+                }
+            }
         }
     }
 }
