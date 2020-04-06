@@ -84,6 +84,20 @@ namespace WinFormsGoogleBooks
                 }
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var dlg = new SaveFileDialog();
+            dlg.Filter = "JSON Datei|*.json|Alle Dateien|*.*";
+            dlg.Title = "Bücher speichern";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                using (var sw = new StreamWriter(dlg.FileName))
+                    sw.Write(JsonConvert.SerializeObject(dataGridView1.DataSource, Formatting.Indented));
+            }
+
+        }
     }
 
 }
