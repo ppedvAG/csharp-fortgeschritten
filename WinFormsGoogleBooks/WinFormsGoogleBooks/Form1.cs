@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -67,5 +68,22 @@ namespace WinFormsGoogleBooks
                 }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var dlg = new SaveFileDialog();
+            dlg.Filter = "DAT Datei|*.dat|Alle Dateien|*.*";
+            dlg.Title = "Bücher speichern";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                using (var sw = new FileStream(dlg.FileName, FileMode.Create))
+                {
+                    var serial = new BinaryFormatter();
+                    serial.Serialize(sw, dataGridView1.DataSource);
+                }
+            }
+        }
     }
+
 }

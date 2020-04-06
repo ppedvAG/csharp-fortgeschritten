@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace WinFormsGoogleBooks
 {
+    [Serializable]
+
     public class BookResults
     {
         public string kind { get; set; }
         public int totalItems { get; set; }
         public Item[] items { get; set; }
     }
+    [Serializable]
 
     public class Item
     {
@@ -25,6 +28,7 @@ namespace WinFormsGoogleBooks
         public Searchinfo searchInfo { get; set; }
     }
 
+    [Serializable]
     public class Volumeinfo
     {
         public string title { get; set; }
@@ -51,29 +55,35 @@ namespace WinFormsGoogleBooks
         public Panelizationsummary panelizationSummary { get; set; }
     }
 
+    [Serializable]
+
     public class Readingmodes
     {
         public bool text { get; set; }
         public bool image { get; set; }
     }
+    [Serializable]
 
     public class Imagelinks
     {
         public string smallThumbnail { get; set; }
         public string thumbnail { get; set; }
     }
+    [Serializable]
 
     public class Panelizationsummary
     {
         public bool containsEpubBubbles { get; set; }
         public bool containsImageBubbles { get; set; }
     }
+    [Serializable]
 
     public class Industryidentifier
     {
         public string type { get; set; }
         public string identifier { get; set; }
     }
+    [Serializable]
 
     public class Saleinfo
     {
@@ -85,18 +95,21 @@ namespace WinFormsGoogleBooks
         public string buyLink { get; set; }
         public Offer[] offers { get; set; }
     }
+    [Serializable]
 
     public class Listprice
     {
         public float amount { get; set; }
         public string currencyCode { get; set; }
     }
+    [Serializable]
 
     public class Retailprice
     {
         public float amount { get; set; }
         public string currencyCode { get; set; }
     }
+    [Serializable]
 
     public class Offer
     {
@@ -105,18 +118,21 @@ namespace WinFormsGoogleBooks
         public Retailprice1 retailPrice { get; set; }
         public bool giftable { get; set; }
     }
+    [Serializable]
 
     public class Listprice1
     {
         public float amountInMicros { get; set; }
         public string currencyCode { get; set; }
     }
+    [Serializable]
 
     public class Retailprice1
     {
         public float amountInMicros { get; set; }
         public string currencyCode { get; set; }
     }
+    [Serializable]
 
     public class Accessinfo
     {
@@ -131,18 +147,21 @@ namespace WinFormsGoogleBooks
         public string accessViewStatus { get; set; }
         public bool quoteSharingAllowed { get; set; }
     }
+    [Serializable]
 
     public class Epub
     {
         public bool isAvailable { get; set; }
         public string acsTokenLink { get; set; }
     }
+    [Serializable]
 
     public class Pdf
     {
         public bool isAvailable { get; set; }
         public string acsTokenLink { get; set; }
     }
+    [Serializable]
 
     public class Searchinfo
     {
