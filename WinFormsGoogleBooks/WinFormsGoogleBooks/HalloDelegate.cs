@@ -10,6 +10,16 @@ namespace WinFormsGoogleBooks
 
     class HalloDelegate
     {
+        public event Action<string, int> DoofesEvent;
+
+
+        public void ExecuteDoofesEvent()
+        {
+            if (DoofesEvent != null)
+                DoofesEvent.Invoke("doof", DateTime.Now.Second);
+        }
+
+
         public HalloDelegate()
         {
             EinfacherDelegate meinDele = EinfacheMethode;
@@ -37,6 +47,15 @@ namespace WinFormsGoogleBooks
             texte.Where(x => x.StartsWith("b"));
             texte.Where(Filter);
         }
+
+        private int myVar;
+
+        public int MyProperty
+        {
+            get => myVar;
+            set => myVar = value;
+        }
+
 
         private bool Filter(string arg)
         {

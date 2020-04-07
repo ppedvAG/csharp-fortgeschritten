@@ -17,6 +17,7 @@ namespace WinFormsGoogleBooks
             InitializeComponent();
         }
 
+
         private async void button1_Click(object sender, EventArgs e)
         {
             var suchUrl = "https://www.googleapis.com/books/v1/volumes?q=" + suchTb.Text;
@@ -129,7 +130,7 @@ namespace WinFormsGoogleBooks
         {
             if (dataGridView1.DataSource is List<Volumeinfo> volumes)
             {
-             
+
                 dataGridView1.DataSource = volumes.Where(b => b.pageCount > 100)
                                                   .OrderByDescending(x => x.averageRating)
                                                   .ThenBy(x => x.title)
@@ -149,6 +150,34 @@ namespace WinFormsGoogleBooks
                 var result = volumes.Where(x => x.ratingsCount > 0).Average(x => x.averageRating);
                 MessageBox.Show($"Result: {result}");
             }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var hd = new HalloDelegate();
+
+            hd.DoofesEvent += DoofHandler;
+            hd.DoofesEvent += DoofHandler;
+            hd.DoofesEvent += DoofHandler;
+            hd.DoofesEvent -= DoofHandler;
+
+            
+
+            this.MouseMove += (s, mea) => this.Text = $"{mea.X}x{mea.Y}";
+
+            this.MouseMove += welkfelwkfwelknf;
+
+            hd.ExecuteDoofesEvent();
+        }
+
+        private void welkfelwkfwelknf(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoofHandler(string txt, int zahl)
+        {
+            MessageBox.Show($"{txt} {zahl}");
         }
     }
 
