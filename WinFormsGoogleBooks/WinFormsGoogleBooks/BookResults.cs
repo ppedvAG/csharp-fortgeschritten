@@ -95,22 +95,22 @@ namespace WinFormsGoogleBooks
         public string buyLink { get; set; }
         public Offer[] offers { get; set; }
     }
-    [Serializable]
 
+    [Serializable]
     public class Listprice
     {
         public float amount { get; set; }
         public string currencyCode { get; set; }
     }
-    [Serializable]
 
+    [Serializable]
     public class Retailprice
     {
         public float amount { get; set; }
         public string currencyCode { get; set; }
     }
-    [Serializable]
 
+    [Serializable]
     public class Offer
     {
         public int finskyOfferType { get; set; }
@@ -118,22 +118,22 @@ namespace WinFormsGoogleBooks
         public Retailprice1 retailPrice { get; set; }
         public bool giftable { get; set; }
     }
-    [Serializable]
 
+    [Serializable]
     public class Listprice1
     {
         public float amountInMicros { get; set; }
         public string currencyCode { get; set; }
     }
-    [Serializable]
 
+    [Serializable]
     public class Retailprice1
     {
         public float amountInMicros { get; set; }
         public string currencyCode { get; set; }
     }
-    [Serializable]
 
+    [Serializable]
     public class Accessinfo
     {
         public string country { get; set; }
@@ -147,15 +147,15 @@ namespace WinFormsGoogleBooks
         public string accessViewStatus { get; set; }
         public bool quoteSharingAllowed { get; set; }
     }
-    [Serializable]
 
+    [Serializable]
     public class Epub
     {
         public bool isAvailable { get; set; }
         public string acsTokenLink { get; set; }
     }
-    [Serializable]
 
+    [Serializable]
     public class Pdf
     {
         public bool isAvailable { get; set; }
