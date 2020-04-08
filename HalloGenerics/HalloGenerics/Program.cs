@@ -18,6 +18,7 @@ namespace HalloGenerics
             //mcg.Add(5);
 
             Type t = typeof(MyClass);
+            Type tt = mc.GetType();
 
             Console.WriteLine("Ende");
             Console.ReadLine();

@@ -26,6 +26,9 @@ namespace HalloAsyncAwait
         public MainWindow()
         {
             InitializeComponent();
+
+            var date = new DateTime();
+            date = "lala";
         }
 
         private void StartOhneThread(object sender, RoutedEventArgs e)
